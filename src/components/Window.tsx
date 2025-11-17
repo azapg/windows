@@ -151,6 +151,7 @@ const Window: React.FC<WindowProps> = ({
     <div
       ref={windowRef}
       style={windowStyle}
+      onClick={onFocus}
     >
       <div
         className="flex items-center justify-between bg-gray-100 px-3 py-2 cursor-move select-none"
