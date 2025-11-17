@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { X, Minus, Square } from 'lucide-react';
+import { X, Minus, Maximize, Minimize } from 'lucide-react';
 
 interface WindowProps {
   id: string;
@@ -159,22 +159,22 @@ const Window: React.FC<WindowProps> = ({
       >
         <div className="flex space-x-2">
           <button
-            onClick={onClose}
+            onClick={(e) => { e.stopPropagation(); onClose(); }}
             className="w-3 h-3 bg-red-500 rounded-full flex items-center justify-center hover:bg-red-600"
           >
             <X size={8} className="text-white" />
           </button>
           <button
-            onClick={onMinimize}
+            onClick={(e) => { e.stopPropagation(); onMinimize(); }}
             className="w-3 h-3 bg-yellow-500 rounded-full flex items-center justify-center hover:bg-yellow-600"
           >
             <Minus size={8} className="text-white" />
           </button>
           <button
-            onClick={onMaximize}
+            onClick={(e) => { e.stopPropagation(); onMaximize(); }}
             className="w-3 h-3 bg-green-500 rounded-full flex items-center justify-center hover:bg-green-600"
           >
-            <Square size={8} className="text-white" />
+            {isMaximized ? <Minimize size={8} className="text-white" /> : <Maximize size={8} className="text-white" />}
           </button>
         </div>
         <span className="text-sm font-medium">{title}</span>
